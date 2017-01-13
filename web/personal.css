@@ -1,0 +1,23 @@
+div.jsDivs {
+	font-size: 1.5em;
+	
+}
+h1 {
+	color: #85548E
+}
+
+.raby-img:hover {
+	opacity: 0.3;
+}
+
+span.bold{
+	font-weight: bold;
+}
+
+.navbar .navbar-inverse .navbar-brand{
+	background-image: none;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #85548E;
+}
