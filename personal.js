@@ -13,14 +13,13 @@ function changeDiv1Color()
 					}
 				document.getElementById("firstDiv").style.backgroundColor = userChoice;
 			}
+			
 $(document).ready(function(){
 	
-	$("#jqButton").click(function(){
-		$("#firstDiv").css("background-color", $("#colorPreference").val());
-	});
-	
-	$("#jqFade").click(function(){
-		$("#thirdDiv").fadeToggle("slow");
+	$('.col-md-3').hover(function () {
+		var $this = $(this);
+		$this.removeClass('col-md-3').addClass('col-md-8');
+		
 	});
 	
 });

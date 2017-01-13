@@ -1,3 +1,7 @@
+body {
+	padding-bottom: 70px;
+}
+
 div.jsDivs {
 	font-size: 1.5em;
 	
@@ -6,8 +10,16 @@ h1 {
 	color: #85548E
 }
 
-.raby-img:hover {
+.raby-img {
 	opacity: 0.3;
+}
+
+.raby-img:hover {
+	opacity: 1;
+}
+
+#secondDiv:hover {
+	
 }
 
 span.bold{
@@ -21,3 +33,4 @@ span.bold{
 .navbar-inverse .navbar-brand {
 	color: #85548E;
 }
+
