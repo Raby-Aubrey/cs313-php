@@ -11,15 +11,7 @@ h1 {
 }
 
 .raby-img {
-	opacity: 0.3;
-}
-
-.raby-img:hover {
-	opacity: 1;
-}
-
-#secondDiv:hover {
-	
+	padding-top: 25px;
 }
 
 span.bold{
