@@ -23,12 +23,9 @@
 		//reading in summary text
 		$myFile = 'surveydata.txt';
 		$array = array();
-		/*$fh = fopen($myFile, 'r');
-		$theSummary = fread($fh, filesize($myFile));
-		*/
+
 		foreach (file($myFile) as $line){
 			list($key, $value) = explode(' ', $line, 2) + array(NULL, NULL);
-			echo "$key = $value"; 
 			$value = trim($value);
 			
 			if($value !== NULL){
@@ -36,7 +33,7 @@
 			}
 		}
 		
-		echo print_r($array);
+		//echo print_r($array);
 		
 		//update the tallies
 		if(isset($_POST['q1']) && isset($_POST['q2']) && isset($_POST['q3']) && isset($_POST['q4']) ) {
@@ -87,31 +84,13 @@
 			if($ret == false){
 				die('There was an error writing to the surveydata file.');
 			} 
-			else {
-				echo "$ret bytes written to surveydata file";
-			}
-			
-		} else {
-			die('no form data to process');
-		}
-		
-		
-		//saving survey results
-		/*if(isset($_POST['q1']) && isset($_POST['q2']) && isset($_POST['q3']) && isset($_POST['q4']) ) {
-			$data = $_POST['q1']. ',' . $_POST['q2']. ',' . $_POST['q3']. ',' . $_POST['q4']. "\r\n";
-			$ret = file_put_contents('surveydata.txt', $data, FILE_APPEND | LOCK_EX);
-			if($ret == false){
-				die('There was an error writing to the surveydata file.');
-			} 
-			else {
+			/*else {
 				echo "$ret bytes written to surveydata file";
 			}*/
 			
-		/*} else {
+		} /*else {
 			die('no form data to process');
 		}*/
-		
-		
 		
 	?>
 	
