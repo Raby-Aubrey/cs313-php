@@ -17,29 +17,28 @@
 		Output-->
 
 	</head>
-	<body>
+	<body id="assignments">
 		<div class="container">
 			<h1 class="page-header">Aubrey Raby - CS313 Assignments</h1>
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="default.html"><span class="glyphicon glyphicon-home"></span>&nbsp&nbspHome</a></li>
-				<li class="active"><a href="assignments.html"><span class="glyphicon glyphicon-th-list"></span>&nbsp&nbspAssignments</a></li>
-			</ul>
+			<?php include_once('phpHeader.php');?>
+			
 			
 			
 			<div class="jsDivs" id="firstDiv">
-				<p>Coming soon</p>
+				<p>Repeat after me: Doing homework can be fun.</p> 
+				<p>Again: Doing homework <em>can</em> be fun. </p>
+				<p>With feeling: Doing homework can be <strong>fun</strong>!</p>
+				
+				<ul>
+					<li><a href="survey.php">Week 3 - Survey</a></li>
+				</ul>
+				
+				
+				<p>More fun coming soon.</p>
 				
 			</div>
 			
-			 <nav class="navbar navbar-inverse navbar-fixed-bottom">
-				 <div class="navbar-header">
-					<a class="navbar-brand" href="default.html">Aubrey Raby - CS313</a>
-				 </div>
-				<ul class="nav navbar-nav">
-					<li><a href="default.html">Home</a></li>
-					<li class="active"><a href="assignments.html">Assignments</a></li>
-				</ul>
-			</nav>
+			 <?php include_once('phpFooter.php');?>
 		</div>
 	</body>
 </html>

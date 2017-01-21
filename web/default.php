@@ -17,13 +17,11 @@
 		Output-->
 
 	</head>
-	<body>
+	<body id="home">
 		<div class="container">
 			<h1 class="page-header">Aubrey Raby - CS313 Homepage</h1>
-			<ul class="nav nav-tabs" role="tablist">
-				<li class="active"><a href="default.html"><span class="glyphicon glyphicon-home"></span>&nbsp&nbspHome</a></li>
-				<li><a href="assignments.html"><span class="glyphicon glyphicon-th-list"></span>&nbsp&nbspAssignments</a></li>
-			</ul>
+			
+			<?php include_once('phpHeader.php');?>
 			
 			<div class="row">
 				<div class="col-xs-3 jsDivs" id="firstDiv">
@@ -43,16 +41,6 @@
 			
 		</div>
 		
-		<div class="container" >
-					 <nav class="navbar navbar-inverse navbar-fixed-bottom">
-				 <div class="navbar-header">
-					<a class="navbar-brand" href="default.html">Aubrey Raby - CS313</a>
-				 </div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="default.html">Home</a></li>
-					<li><a href="assignments.html">Assignments</a></li>
-				</ul>
-			</nav>
-		</div>
+		<?php include_once('phpFooter.php');?>
 	</body>
 </html>

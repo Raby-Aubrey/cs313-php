@@ -1,0 +1,14 @@
+Total 0
+Yes 0
+No 0
+child 0
+teen 0
+adult 0
+na 0
+gymnastic 0
+yoga 0
+karate 0
+informal 0
+dna 0
+Yep 0
+Nope 0

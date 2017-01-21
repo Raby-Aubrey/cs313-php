@@ -26,3 +26,7 @@ span.bold{
 	color: #85548E;
 }
 
+.hidden{
+	display: none;
+}
+
