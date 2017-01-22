@@ -123,7 +123,7 @@
 				</div>
 				
 				<?php echo isset($_POST['q1']) ? '<p>Thank you for taking my survey. </p>': '' ?> 
-				<?php echo (isset($_SESSION['voted'])) ? '<p>You have already taken this survey. (session message) </p>': '' ?> 
+				<?php echo ((isset($_SESSION['voted'])) && (!isset($_POST['q1']))) ? '<p>You have already taken this survey. (session message) </p>': '' ?> 
 				<?php echo ((isset($_COOKIE['hasVoted'])) && ((!isset($_SESSION['voted'])))) ? '<p>You have already taken this survey. (cookie message) </p>': '' ?> 
 				
 				<p>I hope you have enjoyed seeing the results of this survey. Remember to do something fun (like a handstand) every day!</p>
