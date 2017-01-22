@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE HTML>
 <html lang="en-us">
 	<head>
@@ -41,6 +43,9 @@
 			$q2Key = $_POST['q2'];
 			$q3Key = $_POST['q3'];
 			$q4Key = $_POST['q4'];
+			
+			//set session variables
+			$_SESSION['voted'] = True;
 			
 			//load the current counts
 			$total = $array['Total'];
@@ -99,16 +104,22 @@
 			<?php include_once('phpHeader.php');?>
 			
 			
-			<div class="jsDivs" id="firstDiv">
+			<div class="jsDivs" id="resultsDiv">
 				<h2>Handstand Survey Results</h2>
 				
-				Total Votes: <?php echo $array['Total']; ?> <br/>
-				Question 1: Yes-<?php echo $array['Yes']; ?> No-<?php echo $array['No']; ?> <br/>
-				Question 2: Child-<?php echo $array['child']; ?> Teen-<?php echo $array['teen']; ?> Adult-<?php echo $array['adult']; ?> N/A-<?php echo $array['na']; ?><br/>
-				Question 3: Gymnastic-<?php echo $array['gymnastic']; ?> Yoga-<?php echo $array['yoga']; ?> Karate-<?php echo $array['karate']; ?> Informal-<?php echo $array['informal']; ?> N/A-<?php echo $array['dna']; ?><br/>
-				Question 4: Yes-<?php echo $array['Yep']; ?> No-<?php echo $array['Nope']; ?> <br/><br/>
+				<div class='well'>
+				<strong>Total Votes:</strong> <?php echo $array['Total']; ?> <br/>
+				<strong>Do you know how to do a handstand?</strong> <br/>
+				Yes-<?php echo $array['Yes']; ?> &emsp; No-<?php echo $array['No']; ?> <br/>
+				<strong>When did you learn how to do a handstand?</strong> <br/>
+				Child-<?php echo $array['child']; ?> &emsp; Teen-<?php echo $array['teen']; ?> &emsp; Adult-<?php echo $array['adult']; ?> &emsp; N/A-<?php echo $array['na']; ?><br/>
+				<strong>What kind of handstand did you learn?</strong> <br/>
+				Gymnastic-<?php echo $array['gymnastic']; ?> &emsp; Yoga-<?php echo $array['yoga']; ?> &emsp; Karate-<?php echo $array['karate']; ?> &emsp; Informal-<?php echo $array['informal']; ?> &emsp; N/A-<?php echo $array['dna']; ?><br/>
+				<strong>Do you do a handstand every day?</strong> <br/>
+				Yes-<?php echo $array['Yep']; ?> &emsp; No-<?php echo $array['Nope']; ?> 
+				</div>
 				
-				
+				<?php echo ($_SESSION['voted'] == True ? '<p>Thank you for taking my survey.</p>': '') ?> 
 				
 				<p>I hope you have enjoyed seeing the results of this survey. Remember to do something fun (like a handstand) every day!</p>
 			</div>

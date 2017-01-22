@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
+?>
+
 <!DOCTYPE HTML>
 <html lang="en-us">
 	<head>

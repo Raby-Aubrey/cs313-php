@@ -30,7 +30,7 @@ $(document).ready(function(){
 		
 	});
 	
-	//toggle visible segments to start the survey
+	//toggle visible survey segments to start the survey
 	$("#startSurvey").click(function() {
 		$("#surveyIntroDiv").toggle();
 		$("#q1Div").show();
@@ -39,6 +39,7 @@ $(document).ready(function(){
 		$("#q4Div").show();
 		$("#surveySubmitDiv").show();
 						console.log("Hit the q1Div toggle function.");
-});
+	});
+	
 
 });
