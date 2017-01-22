@@ -1,6 +1,7 @@
 <?php 
 session_start(); 
-if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
+if ((isset($_COOKIE['hasVoted'])) || ((isset($_SESSION['voted'])))) { header('Location: surveyResults.php');}
+//if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
 ?>
 
 <!DOCTYPE HTML>

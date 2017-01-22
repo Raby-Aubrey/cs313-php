@@ -47,6 +47,9 @@
 			//set session variables
 			$_SESSION['voted'] = True;
 			
+			//create cookie
+			setcookie('hasVoted', 'True');
+			
 			//load the current counts
 			$total = $array['Total'];
 			$q1 = $array[$q1Key];
@@ -119,7 +122,9 @@
 				Yes-<?php echo $array['Yep']; ?> &emsp; No-<?php echo $array['Nope']; ?> 
 				</div>
 				
-				<?php echo ($_SESSION['voted'] == True ? '<p>Thank you for taking my survey.</p>': '') ?> 
+				<?php echo isset($_POST['q1']) ? '<p>Thank you for taking my survey. </p>': '' ?> 
+				<?php echo (isset($_SESSION['voted'])) ? '<p>You have already taken this survey. (session message) </p>': '' ?> 
+				<?php echo ((isset($_COOKIE['hasVoted'])) && ((!isset($_SESSION['voted'])))) ? '<p>You have already taken this survey. (cookie message) </p>': '' ?> 
 				
 				<p>I hope you have enjoyed seeing the results of this survey. Remember to do something fun (like a handstand) every day!</p>
 			</div>
