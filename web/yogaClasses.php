@@ -2,7 +2,7 @@
 session_start(); 
 //if ((isset($_COOKIE['hasVoted'])) || ((isset($_SESSION['voted'])))) { header('Location: surveyResults.php');}
 //if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
-require('/model/database.php');
+require('model/database.php');
 
 	if (isset($_GET['classList'])) {
 		$queryType = $_GET['classList'];

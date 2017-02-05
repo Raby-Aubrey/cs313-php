@@ -2,7 +2,7 @@
 session_start(); 
 //if ((isset($_COOKIE['hasVoted'])) || ((isset($_SESSION['voted'])))) { header('Location: surveyResults.php');}
 //if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
-require('/model/database.php');
+require('model/database.php');
 
 	if(isset($_POST['usrNameP1']) && isset($_POST['usrPwdP1']) ) {
 		$userName = $_POST['usrNameP1'];
