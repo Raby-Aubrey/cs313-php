@@ -30,7 +30,10 @@
 				<p>With feeling: Doing homework can be <strong>fun</strong>!</p>
 				
 				<ul>
+					<li><a href="hello.html">Week 2 - Hello World</a></li>
 					<li><a href="survey.php">Week 3 - Survey</a></li>
+					<li><a href="data.php">Week 4 - Data Access</a></li>
+					<li><a href="yogaUser.php">Project 1 - Yoga User Interface</a></li>
 				</ul>
 				
 				

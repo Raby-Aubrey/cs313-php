@@ -22,6 +22,10 @@ $(document).ready(function(){
 	$("#q3Div").hide();
 	$("#q4Div").hide();
 	$("#surveySubmitDiv").hide();
+	//hide thinThread elements
+	$("#insertEmployee").hide();
+	$("#selectEmployees").hide();
+	
 	
 	$(function() {
 		//highlight the current page in nav
@@ -41,5 +45,11 @@ $(document).ready(function(){
 						console.log("Hit the q1Div toggle function.");
 	});
 	
+	//obtain employee list and toggle visible thinThread elements
+	$("#getEmployees").click(function() {
+		$("#insertEmployee").toggle();
+		$("#selectEmployees").toggle();
+			console.log("Hit the employee toggle function.");
+	});
 
 });
