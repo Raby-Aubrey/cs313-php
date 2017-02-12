@@ -15,6 +15,27 @@ require('model/database.php');
 		//echo $userID;
 	}
 	
+	if (isset($_GET['classEnroll'])){
+		$enrollId = $_GET['enrollId'];
+		echo ($enrollId);
+		global $db;
+
+		try {
+			$statement = $db->prepare('INSERT INTO cs313.classattendees(
+										userid, classid)
+										VALUES (:userid, :classid)');
+			$statement->bindparam(":userid", $_SESSION["userIdP1"]);
+			$statement->bindValue(':classid', $enrollId, PDO::PARAM_INT);
+			$statement->execute();
+			
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
+			echo "<p>enroll query in yogaClasses.php had an Error: $error_message </p>";
+		}
+		
+		
+		$message = "Class enrolment successful.";
+	}
 
 ?>
 <!DOCTYPE HTML>
@@ -42,6 +63,8 @@ require('model/database.php');
 			<div class="jsDivs" id="firstDiv">
 				<p>Class interface for a yoga studio.</p> 
 				
+				<?php echo (isset($message) ? "<div class='alert alert-success'>$message</div>" : ""); ?>
+				
 				<form action="" method="get" class='well'>
 					<input type="submit" name="classList" value="<?php if(!empty($_SESSION['userIdP1'])) { echo "Sign Up for Classes"; } else { echo "Available Classes" ;} ?>" />
 					<?php if((!empty($_SESSION['userIdP1']))) {
@@ -55,6 +78,8 @@ require('model/database.php');
         <?php 
 			if ((isset($queryType)) && ($queryType == 'Sign Up for Classes')) { ?>
 				<h3>Sign Up for Classes</h3>
+				
+			<form action="" method="get">
 			<table class="table table-striped">
 					<tr>
 						<th> 
@@ -85,14 +110,16 @@ require('model/database.php');
 					}
 					foreach ($result as $acrow) {
 						//replace TODO with link to sign up for class
-						printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td>TODO</td></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']) );
+						printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td><input type='submit' name='classEnroll' value='Enroll'/><input type='hidden' name='enrollId' value='%s'/></td></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']), $acrow['id'] );
 					}
 					
+					echo '</form>';
 				} catch (PDOException $e) {
 					$error_message = $e->getMessage();
 					echo "<p>query to get classes to enroll into had an Error: $error_message </p>";
 				}
 			} else if ((isset($queryType)) && ($queryType == 'Available Classes')) { ?>
+				
 				<h3>Available Classes</h3>
 				<table class="table table-striped"> 
 					<tr> 
@@ -143,7 +170,7 @@ require('model/database.php');
 					 $statement->execute(array($_SESSION["userIdP1"]));
 					 //$statement->bindparam(":userId",$_SESSION["userIdP1"]);
 					 //$statement->bindValue(':userId', $userID, PDO::PARAM_INT);
-					 $statement->execute();
+					 //$statement->execute();
 					$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 					//echo '<pre>'.print_r($result, true) . '</pre>';
 					if (!$result) {
