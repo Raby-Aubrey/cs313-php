@@ -1,7 +1,5 @@
 <?php 
 	session_start(); 
-//if ((isset($_COOKIE['hasVoted'])) || ((isset($_SESSION['voted'])))) { header('Location: surveyResults.php');}
-//if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
 	if ((isset($_SESSION['userIdP1']))) {
 		session_unset();
 		session_destroy();
@@ -40,18 +38,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></></link>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="personal.css">
+		<link rel="stylesheet" href="personal.css"></link>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="personal.js"></script>
 		<title>Yoga LogIn - Raby</title>
-		
-		<!-- Input
-			
-		Processing
-			
-		Output-->
 
 	</head>
 	<body id="userLogInP1">
@@ -59,12 +51,8 @@
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
 			<h2>Yoga User LogIn</h2>
-			<div class='lead'>
-				Under construction
-			</div>
 			
 			<div class="jsDivs" id="firstDiv">
-				<p>User login for a yoga studio.</p> 
 				
 			<form method="post" action="yogaUser.php" id="insertIndiv">
 			<fieldset>

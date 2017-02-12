@@ -20,7 +20,6 @@ require('model/database.php');
 		$message = "Profile updated successfully.";
 	} else if(isset($_POST['usrFirstName']) && isset($_POST['usrLastName']) && isset($_POST['usrPhone']) && isset($_POST['usrNameNew']) && isset($_POST['usrPwd']) && (empty($_SESSION['userIdP1'])) ) {
 			//new user is creating profile
-			echo "Create New User";
 		$firstName = $_POST['usrFirstName'];
 		$lastName = $_POST['usrLastName'];
 		$phone = $_POST['usrPhone'];
@@ -28,7 +27,6 @@ require('model/database.php');
 		$password = $_POST['usrPwd'];
 		
 		$_SESSION['userIdP1'] = create_user($firstName, $lastName, $phone, $userName, $password);
-		echo "Line 31" . $_SESSION['userIdP1'];
 		$message = "New profile creation and log in successful.";
 	}
 	
@@ -91,7 +89,6 @@ function create_user($firstName, $lastName, $phone, $userName, $password) {
         $statement->execute();
 		
 		$newUserId = $db->lastInsertId("cs313.users_id_seq");
-		echo "newUserId" . $newUserId;
 		
 		return $newUserId;
 
@@ -106,9 +103,9 @@ function create_user($firstName, $lastName, $phone, $userName, $password) {
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></></link>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="personal.css">
+		<link rel="stylesheet" href="personal.css"></link>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="personal.js"></script>
 		<title>Yoga User - Raby</title>
@@ -118,13 +115,9 @@ function create_user($firstName, $lastName, $phone, $userName, $password) {
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
 			<h2>Yoga User Interface</h2>
-			<div class='lead'>
-				Under construction
-			</div>
 			
 			
 			<div class="jsDivs" id="firstDiv">
-				<p>User interface for a yoga studio.</p> 
 				
 				<?php echo (isset($message) ? "<div class='alert alert-success'>$message</div>" : ""); ?>
 				

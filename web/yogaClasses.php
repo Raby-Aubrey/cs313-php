@@ -1,7 +1,5 @@
 <?php 
 session_start(); 
-//if ((isset($_COOKIE['hasVoted'])) || ((isset($_SESSION['voted'])))) { header('Location: surveyResults.php');}
-//if (isset($_SESSION['voted'])) { header('Location: surveyResults.php');}
 require('model/database.php');
 
 	if (isset($_GET['classList'])) {
@@ -12,12 +10,10 @@ require('model/database.php');
 		$registered = $_GET['registered'];
 		//print_r($_SESSION);
 		$userID = intval($_SESSION["userIdP1"]);
-		//echo $userID;
 	}
 	
 	if (isset($_GET['classEnroll'])){
 		$enrollId = $_GET['enrollId'];
-		echo ($enrollId);
 		global $db;
 
 		try {
@@ -43,9 +39,9 @@ require('model/database.php');
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></></link>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="personal.css">
+		<link rel="stylesheet" href="personal.css"></link>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="personal.js"></script>
 		<title>Yoga Classes - Raby</title>
@@ -56,12 +52,8 @@ require('model/database.php');
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
 			<h2>Yoga Class Schedule</h2>
-			<div class='lead'>
-				Under construction
-			</div>
 					
 			<div class="jsDivs" id="firstDiv">
-				<p>Class interface for a yoga studio.</p> 
 				
 				<?php echo (isset($message) ? "<div class='alert alert-success'>$message</div>" : ""); ?>
 				
@@ -102,14 +94,14 @@ require('model/database.php');
 												');
 					$statement->execute();
 					$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-					//echo '<pre>'.print_r($result, true) . '</pre>';
+					
 					if (!$result) {
 						echo "Problem with the query " . $statement . "<br/>";
 						print_r($statement->errorInfo());
 						exit();
 					}
 					foreach ($result as $acrow) {
-						//replace TODO with link to sign up for class
+						//show each class with less than 15 students and a enrol button
 						printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td><input type='submit' name='classEnroll' value='Enroll'/><input type='hidden' name='enrollId' value='%s'/></td></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']), $acrow['id'] );
 					}
 					
@@ -134,7 +126,7 @@ require('model/database.php');
 												');
 					$statement->execute();
 					$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-					//echo '<pre>'.print_r($result, true) . '</pre>';
+					
 					if (!$result) {
 						echo "Problem with the query " . $statement . "<br/>";
 						print_r($statement->errorInfo());
@@ -172,11 +164,9 @@ require('model/database.php');
 					 //$statement->bindValue(':userId', $userID, PDO::PARAM_INT);
 					 //$statement->execute();
 					$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-					//echo '<pre>'.print_r($result, true) . '</pre>';
+					
 					if (!$result) {
 						echo "Not enrolled in any classes.";
-						//echo "Problem with the attendee query.<br/>";
-						//print_r($statement->errorInfo());
 						exit();
 					}
 					foreach ($result as $acrow) {

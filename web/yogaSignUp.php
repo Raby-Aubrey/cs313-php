@@ -1,10 +1,9 @@
 <?php 
 session_start(); 
-echo $_SESSION['userIdP1'];
 
 if ((!empty($_SESSION['userIdP1']))) {
 	require('model/database.php');
-	echo "session is set";
+
 	global $db;
 
     try {
@@ -14,7 +13,7 @@ if ((!empty($_SESSION['userIdP1']))) {
 									LIMIT 1');
         $statement->execute(array($_SESSION["userIdP1"]));
         $result = $statement->fetch();
-        echo '<pre>'.print_r($result, true) . '</pre>';
+        
         $firstName = $result['fname'];
 		$lastName = $result['lname'];
 		$phone = $result['phone'];
@@ -33,7 +32,7 @@ if ((!empty($_SESSION['userIdP1']))) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="personal.css">
+		<link rel="stylesheet" href="personal.css"></link>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
@@ -50,17 +49,8 @@ if ((!empty($_SESSION['userIdP1']))) {
 			<?php } else { ?>
 				<h2>Yoga User Edit Profile</h2>
 			<?php } ?>
-			<div class='lead'>
-				Under construction
-			</div>
 			
 			<div class="jsDivs" id="firstDiv">
-			<!--two value labels needed, which one displayed based on signed in status  -->
-			<?php if ((empty($_SESSION['userIdP1']))) { ?>
-				<p>Sign up for a yoga studio profile.</p>
-			<?php } else { ?>
-				<p>Edit your profile for a yoga studio.</p>
-			<?php } ?>
 				 
 			<form method="post" action="yogaUser.php" id="insertUser">
 			<fieldset>
