@@ -7,14 +7,15 @@ require('model/database.php');
 		$password = $_POST['usrPwdP1'];
 		
 		$_SESSION['userIdP1'] = login_user($userName, $password);
-		$message = "Log in successful.";
+		
 	} else if(isset($_POST['usrFirstName']) && isset($_POST['usrLastName']) && isset($_POST['usrPhone']) && isset($_POST['usrNameNew']) && isset($_POST['usrPwd']) && (isset($_SESSION['userIdP1'])) ) {
 			//logged in user is editing profile
 		$firstName = $_POST['usrFirstName'];
 		$lastName = $_POST['usrLastName'];
 		$phone = $_POST['usrPhone'];
 		$userName = $_POST['usrNameNew'];
-		$password = $_POST['usrPwd'];
+		$tempPassword = $_POST['usrPwd'];
+		$password = password_hash($tempPassword, PASSWORD_DEFAULT);
 		
 		edit_user($firstName, $lastName, $phone, $userName, $password);
 		$message = "Profile updated successfully.";
@@ -24,7 +25,8 @@ require('model/database.php');
 		$lastName = $_POST['usrLastName'];
 		$phone = $_POST['usrPhone'];
 		$userName = $_POST['usrNameNew'];
-		$password = $_POST['usrPwd'];
+		$tempPassword = $_POST['usrPwd'];
+		$password = password_hash($tempPassword, PASSWORD_DEFAULT);
 		
 		$_SESSION['userIdP1'] = create_user($firstName, $lastName, $phone, $userName, $password);
 		$message = "New profile creation and log in successful.";
@@ -35,19 +37,32 @@ require('model/database.php');
 
 function login_user($userName, $password) {
     global $db;
+	global $message;
 
     try {
         $statement = $db->prepare('SELECT id
+									, password
 									FROM cs313.users
-									WHERE username = :userName AND
-									password = :password
+									WHERE username = :userName
 									LIMIT 1');
         $statement->bindValue(':userName', $userName, PDO::PARAM_STR);
-        $statement->bindValue(':password', $password, PDO::PARAM_STR);
         $statement->execute();
         $result = $statement->fetch();
+		
+		$hash = $result['password'];
+	
+	if (password_verify($password, $hash)) {
+		$message = "Log in successful.";
+		return $result['id'];
+	}
+	else{
+		$message2 = "Your User Name or Password do not match";
+		echo "<script type='text/javascript'>alert('$message2');</script>";
+	}
+		
+		
         //echo '<pre>'.print_r($result, true) . '</pre>';
-        return $result['id'];
+        
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         echo "<p>function get_user in yogaUser.php had an Error: $error_message </p>";

@@ -43,6 +43,9 @@ if ((!empty($_SESSION['userIdP1']))) {
 		<div class="container">
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
+			
+			<a href='yogaUser.php'><span class='glyphicon glyphicon-user'></span>&nbsp&nbsp Yoga Home</a>
+			
 			<!--two value labels needed, which one displayed based on signed in status  -->
 			<?php if ((empty($_SESSION['userIdP1']))) { ?>
 				<h2>Yoga User Sign Up</h2>
@@ -76,10 +79,10 @@ if ((!empty($_SESSION['userIdP1']))) {
 				</div>
 				<div class="form-group" >
 					<label for="usrPwd2">Confirm Password: </label>
-					<input type="password" name="usrPwd2" size="75" id="usrPwd2" data-rule-equalTo="#usrPwd" required="required">
+					<input type="password" name="usrPwd2" size="75" id="usrPwd2" data-rule-equalTo="#usrPwd" required="required" onInput="passwordMatch()"><span class="pattern2" style="color: red;">Passwords must match.</span>
 				</div>
 				
-				<div >
+				<div id="signUpButton" >
 					<!--two value labels needed, which one displayed based on signed in status  -->
 					<?php if ((empty($_SESSION['userIdP1']))) { ?>
 						<input class="btn btn-primary " id="usrSignUp" type="submit" name="usrSignUp" value="SignUp">

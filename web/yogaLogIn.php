@@ -3,6 +3,7 @@
 	if ((isset($_SESSION['userIdP1']))) {
 		session_unset();
 		session_destroy();
+		$message = "Log Off successful.";
 	}
 
 	//define variables and set them to empty values
@@ -50,9 +51,14 @@
 		<div class="container">
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
+			
+			<a href='yogaUser.php'><span class='glyphicon glyphicon-user'></span>&nbsp&nbsp Yoga Home</a>
+			
+
 			<h2>Yoga User LogIn</h2>
 			
 			<div class="jsDivs" id="firstDiv">
+				<?php echo (isset($message) ? "<div class='alert alert-success'>$message</div>" : ""); ?>
 				
 			<form method="post" action="yogaUser.php" id="insertIndiv">
 			<fieldset>

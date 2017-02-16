@@ -51,6 +51,9 @@ require('model/database.php');
 		<div class="container">
 			<h1 class="page-header">Aubrey Raby - CS313 Project 1</h1>
 			<?php include_once('phpHeader.php');?>
+			
+			<a href='yogaUser.php'><span class='glyphicon glyphicon-user'></span>&nbsp&nbsp Yoga Home</a>
+			
 			<h2>Yoga Class Schedule</h2>
 					
 			<div class="jsDivs" id="firstDiv">
@@ -91,8 +94,11 @@ require('model/database.php');
 				try {
 					$statement = $db->prepare('SELECT *
 												FROM cs313.available_classes
+												WHERE id NOT IN (SELECT classid
+																FROM cs313.class_attendees
+																WHERE userid = :userId)
 												');
-					$statement->execute();
+					$statement->execute(array($_SESSION["userIdP1"]));
 					$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 					
 					if (!$result) {
@@ -133,7 +139,7 @@ require('model/database.php');
 						exit();
 					}
 					foreach ($result as $acrow) {
-						printf ("<tr><td>%s</td><td>%s</td><td>%s</td>></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']) );
+						printf ("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']) );
 					}
 					
 				} catch (PDOException $e) {
@@ -170,7 +176,7 @@ require('model/database.php');
 						exit();
 					}
 					foreach ($result as $acrow) {
-						printf ("<tr><td>%s</td><td>%s</td><td>%s</td>></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']) );
+						printf ("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", $acrow['classdate'], htmlspecialchars($acrow['timeslot']), htmlspecialchars($acrow['classtype']) );
 					}
 					
 				} catch (PDOException $e) {

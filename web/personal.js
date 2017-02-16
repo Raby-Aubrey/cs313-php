@@ -1,5 +1,16 @@
 
-
+	function passwordMatch() {
+		var thePassword = document.getElementById("usrPwd2").value;
+		var origPswd = document.getElementById("usrPwd").value;
+		if (thePassword === origPswd) {
+			document.getElementsByClassName("pattern2")[0].style.visibility = 'hidden';
+			document.getElementById("signUpButton").style.visibility = 'visible';
+			}
+		else 	{
+				document.getElementsByClassName("pattern2")[0].style.visibility = 'visible';
+				document.getElementById("signUpButton").style.visibility = 'hidden';
+				}
+		}
 
 
 $(document).ready(function(){
@@ -51,5 +62,7 @@ $(document).ready(function(){
 		$("#selectEmployees").toggle();
 			console.log("Hit the employee toggle function.");
 	});
+	
+	
 
 });
